@@ -1,0 +1,45 @@
+body {
+    background-color: blue;
+}
+h1
+{
+  color:grey;
+  margin-left:600px;
+
+}
+
+#register_student
+{
+  top: 200px;
+  background-color: red;
+}
+
+#header {
+    /*
+    background-image: url(images/navbar588.png);
+    height: 48px;
+    width: 588px;
+    margin: 2em auto;
+    */
+    margin-left: 600px;
+    }
+/*
+div.absolute {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+}
+*/
+
+#header1 {
+    /*
+    background-image: url(images/navbar588.png);
+    height: 48px;
+    width: 588px;
+    margin: 2em auto;
+    */
+    margin-left: 600px;
+}
