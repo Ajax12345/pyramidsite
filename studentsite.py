@@ -12,6 +12,13 @@ class theRequest(flask.Request):
 class simpleRecord(colander.MappingSchema):
 	description = colander.SchemaNode(colander.String(), validator = colander.Length())
 	amount = colander.SchemaNode(colander.Int())
+	'''styling:
+text_input = deform.widget.TextInputWidget(
+    css_class='yourdivnamehere')
+first_name = colander.SchemaNode(colander.String(),
+            widget = text_input)
+
+'''
 
 class dataList(colander.SequenceSchema):
 	item = simpleRecord()
@@ -20,12 +27,22 @@ class topList(colander.MappingSchema):
 	items = dataList()
 
 class Mapping(colander.Schema):
-	name = colander.SchemaNode(colander.String(), description="ContentName")
-	date = colander.SchemaNode(colander.Date(), widget = deform.widget.DatePartsWidget(), description = "content date")
-class Schema(colander.Schema):
-	number = colander.SchemaNode(colander.Integer())
+	Firstname = colander.SchemaNode(colander.String(), css_class='deform-widget-with-style')
+	Lastname = colander.SchemaNode(colander.String(), css_class='deform-widget-with-style')
+	Email = colander.SchemaNode(colander.String(), css_class='deform-widget-with-style')
 
-	mapping = Mapping(title = "open by default", widget = deform.widget.MappingWidget(template="mapping_accordion", open=True))
+
+	date = colander.SchemaNode(colander.Date(), widget = deform.widget.DatePartsWidget(), description = "content date")
+
+class Schema(colander.Schema):
+	Age = colander.SchemaNode(colander.Integer(), css_class='deform-widget-with-style')
+	Firstname = colander.SchemaNode(colander.String(), css_class='deform-widget-with-style')
+	Lastname = colander.SchemaNode(colander.String(), css_class='deform-widget-with-style')
+	Email = colander.SchemaNode(colander.String(), css_class='deform-widget-with-style')
+
+#	Number = colander.SchemaNode(colander.Integer())
+
+	#mapping = Mapping(widget = deform.widget.MappingWidget(template="mapping_accordion", open=True))
 
 #Creating the flask "application"
 app = flask.Flask(__name__)
@@ -43,13 +60,12 @@ def index():
 		#Please note the "multi=True"
 
 		controlData = peppercorn.parse(flask.request.form.items(multi=True))
-		form = deform.Form(topList(),buttons=('submit',)).render(controlData)
-		form = deform.Form(topList(),buttons=('submit',)).render(controlData)
+
 		print "controlData", controlData #this is it!!!!!!!!!!!!!!!!!!!!
 		#Now, create the form to be returned to the user according to the schema defined before and populating it with the data that were posted by the user and processed by the application so far.
 		form = deform.Form(topList(),buttons=('submit',)).render(controlData)
 		aMess="Processed Data" #Just a string to define a message
-		return flask.render_template("index.html", theForm = form, theMessage = "HI")
+		return flask.render_template("index.html", theForm = form, title = "HI")
 
 	else:
 		#Just return an empty form
