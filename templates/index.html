@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Ultimate Sorter</title>
+		<style>
+			.wrapper{
+				margin-left:auto;
+				margin-right:auto;
+				width:1024px;
+				height:128;
+				border:think solid grey;
+				font-family:Verdana;
+			}
+			.header{
+				width:inherit;
+				border-bottom:thin black solid;
+			}
+			.main{
+				width:inherit;
+				border-bottom:thin black solid;
+			}
+			.footer{
+				font-size:smaller
+			}
+			.errorBar{
+				text-align:center;
+				font-weight:bold;
+				font-style:italic;
+				color:white;
+				background-color:red;
+				height:2em;
+			}
+		</style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- CSS if required-->
+		<link rel="stylesheet" href="/static/form.css" type="text/css" />
+		<!-- JavaScript deform.js is absolutely essential for the controls to operate properly-->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="/static/deform.js"></script>
+	</head>
+	<!--deform.load() MUST be called -->
+	<body onload="deform.load()">
+		<div class="wrapper">
+			<div class="header">
+				<h1>Welcome...</h1>
+				<p>Some website</p>
+			</div>
+			<div class="message">
+				{{theMessage}}
+			</div>
+			<!--Please note the |safe designation in the following line so that "theForm's" content is not escaped -->
+			<div class="main">
+				{{ theForm |safe}}
+			</div>
+			<div class="footer">
+				<p>Blah blah</p>
+			</div>
+		</div>
+	</body>
+</html>
