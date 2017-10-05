@@ -1,0 +1,74 @@
+<html>
+<h1>StudentHost</h1>
+<style>
+body {
+    background-color: blue;
+}
+h1
+{
+  color:grey;
+  margin-left:600px;
+
+}
+
+#register_student
+{
+  top: 200px;
+  background-color: red;
+}
+
+#header {
+    /*
+    background-image: url(images/navbar588.png);
+    height: 48px;
+    width: 588px;
+    margin: 2em auto;
+    */
+    margin-left: 600px;
+    }
+/*
+div.absolute {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+}
+*/
+
+#header1 {
+    /*
+    background-image: url(images/navbar588.png);
+    height: 48px;
+    width: 588px;
+    margin: 2em auto;
+    */
+    margin-left: 600px;
+}
+</style>
+
+  <body>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+    <div id="header">
+      <button id="btn1" name="register_student" type="button">For Students</button>
+    </div>
+    <div id="header1">
+
+      <button id="btn2" name = "register_college" type="button">For Colleges</button>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+    $("#btn1").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: "/form_data",
+            success: function (data) {
+              $(location).attr('href','http://127.0.0.1:5000/form_data');
+            }
+          });
+      });
+      </script>
+  </body>
+
+</html>
